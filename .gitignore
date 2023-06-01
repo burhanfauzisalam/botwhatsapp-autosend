@@ -1,5 +1,5 @@
 .wwebjs_auth
 node_modules
 .env
-note
+note.txt
 axios.js
