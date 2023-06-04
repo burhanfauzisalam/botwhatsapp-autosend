@@ -3,7 +3,9 @@ const qrcode = require("qrcode-terminal");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 require("dotenv").config();
 const LINK = process.env.LINK;
-const TEXT = process.env.TEXT;
+const TEXT1 = process.env.TEXT1;
+const TEXT2 = process.env.TEXT2;
+const TEXT3 = process.env.TEXT3;
 
 //Authentication
 const client = new Client({
@@ -22,7 +24,7 @@ client.on("ready", () => {
 
 client.on("ready", () => {
   // Tentukan jeda waktu (dalam milidetik)
-  const rand = Math.floor(Math.random() * 10) * 1000;
+  const rand = Math.floor(Math.random() * (60 - 10) + 10) * 1000;
 
   // Data
   const numbr = [];
@@ -53,8 +55,14 @@ client.on("ready", () => {
           console.log("Tidak ada data");
           console.log("Memeriksa ulang data dari API...");
         } else {
+          const TEXT = [TEXT1, TEXT2, TEXT3];
+          const random = (min, max) => {
+            return Math.floor(Math.random() * (max - min) + min);
+          };
+          const min = 0;
+          const max = TEXT.length;
           // Jika ada datanya, maka pesan akan dikirimkan
-          client.sendMessage(`${numbr[index]}@c.us`, TEXT);
+          client.sendMessage(`${numbr[index]}@c.us`, TEXT[random(min, max)]);
           console.log(`Pesan ke-${numbr[index]} berhasil terkirim`);
           // Setelah mengirim pesan, data dari API akan dihapus
           axios
@@ -71,9 +79,9 @@ client.on("ready", () => {
             // Jika pesan sudah terkirim semua, maka semua data akan direset dan memeriksa ulang data dari API
             console.log(`${numbr.length} pesan telah terkirim.`);
             console.log("Memeriksa data dari API...");
-            numbr.splice(0);
-            arr.splice(0);
-            setTimeout(autoSend, 15000);
+            // numbr.splice(0);
+            // arr.splice(0);
+            setTimeout(autoSend, 1000 * 60 * 15);
           }
         }
       });
