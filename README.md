@@ -11,8 +11,8 @@
 
 2. Buka file .env, lalu isi dengan kode berikut<br>
    LINK="LINK API KAMU"<br>
-   TEXT1="ISI PESAN KE-1 YANG MAU DIKIRIMKAN"
-   TEXT2="ISI PESAN KE-2 YANG MAU DIKIRIMKAN"
+   TEXT1="ISI PESAN KE-1 YANG MAU DIKIRIMKAN"<br>
+   TEXT2="ISI PESAN KE-2 YANG MAU DIKIRIMKAN"<br>
    dan seterusnya...
 
 3. Pastikan data pada API mengirimkan data dengan format berikut<br>
