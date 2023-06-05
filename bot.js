@@ -6,6 +6,7 @@ const LINK = process.env.LINK;
 const TEXT1 = process.env.TEXT1;
 const TEXT2 = process.env.TEXT2;
 const TEXT3 = process.env.TEXT3;
+const TEXT4 = process.env.TEXT4;
 
 //Authentication
 const client = new Client({
@@ -51,11 +52,11 @@ client.on("ready", () => {
         // Menjalankan fungsi mengirim pesan
         if (numbr.length == 0) {
           // Jika data kosong, maka akan diperiksa ulang
-          setTimeout(autoSend, 15000);
+          setTimeout(autoSend, 20000);
           console.log("Tidak ada data");
           console.log("Memeriksa ulang data dari API...");
         } else {
-          const TEXT = [TEXT1, TEXT2, TEXT3];
+          const TEXT = [TEXT1, TEXT2, TEXT3, TEXT4];
           const random = (min, max) => {
             return Math.floor(Math.random() * (max - min) + min);
           };
@@ -79,9 +80,9 @@ client.on("ready", () => {
             // Jika pesan sudah terkirim semua, maka semua data akan direset dan memeriksa ulang data dari API
             console.log(`${numbr.length} pesan telah terkirim.`);
             console.log("Memeriksa data dari API...");
-            // numbr.splice(0);
-            // arr.splice(0);
-            setTimeout(autoSend, 1000 * 60 * 15);
+            numbr.splice(0);
+            arr.splice(0);
+            setTimeout(autoSend, 20000);
           }
         }
       });
